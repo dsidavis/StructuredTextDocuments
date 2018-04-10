@@ -1,3 +1,7 @@
+ifndef PDFTOHTML
+  PDFTOHTML=pdftohtml
+endif  
+
 
 # Convert a PDF to a collection of jpg/png files, one for each page.
 #
@@ -9,3 +13,9 @@
 
 %.png: %.pdf
 	convert -density 150 -antialias $< -resize 1024x -quality 100 "$(*)%03d.png"
+
+
+#  Convert PDF to XML file. Uses the name of the file and substitutes the extension with .xml
+%.xml: %.pdf
+	$(PDFTOHTML) -xml $<
+
