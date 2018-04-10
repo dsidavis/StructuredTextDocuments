@@ -1,0 +1,11 @@
+
+# Convert a PDF to a collection of jpg/png files, one for each page.
+#
+# make -f MakeRules Bardos-1975.jpg
+
+%.jpg: %.pdf
+	convert -density 150 -antialias $< -resize 1024x -quality 100 "$(*)%03d.jpg"
+
+
+%.png: %.pdf
+	convert -density 150 -antialias $< -resize 1024x -quality 100 "$(*)%03d.png"

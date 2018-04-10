@@ -1,0 +1,10 @@
+#!/bin/sh
+
+out="$2"
+
+# If the second argument is not provided, we write to a file named foo.
+if test "$out" = "" ; then
+ out="foo"
+fi
+
+qpdf --qdf --object-streams=disable "$1" "$out"
