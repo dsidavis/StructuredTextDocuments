@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Extracting Structured Text from Documents</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Extracting Structured Text from Documents
+
+
+## [https://github.com/dsidavis/ExtractStructuredText](https://github.com/dsidavis/ExtractStructuredText)
+
+### Duncan Temple Lang
+
+<div style="clear: both"/>
+
+<!-- <hr width="50%"/> -->
+<img src="http://dsi.ucdavis.edu/images/dsi_banner.png" height="40%"></img>
+
+---
+layout: true
+<img style="float: right" src="http://dsi.ucdavis.edu/images/dsi_brand_logo.png"></img>
+
+---
+
+# Document Formats
+
++ Simple text
++ HTML
++ RTF
++ *Microsoft Word* (docx) and other similar formats.
++ *PDF* (Portable Document Format)
++ Scanned Documents - *OCR*
+
+## Other Formats
+
++ Postscript  - convert to PDF
++ LaTeX, Markdown, ... - convert with pandoc, or specific parsers
+
+
+---
+
+# Simple Text
+
++ No structure to discover
+  + Words, lines, paragraphs
+  + Maybe titles in specific positions
+
++ Basic text manipulation
++ Regular expressions
+  + Space, punctuation, ...
+
+---
+
+# HTML
+
+
++ Tables - `readHTMLTable()`
++ lists - `readHTMList()`
++ links - `getHTMLLinks()`
++ forms - RHTMLForms
++ images - XPath
++ scripts - XPath
+
++ XPath for more general structure.
+  + ad hoc/page-specific formatting.
+
++ XML and xml2 packages in R.
+
+---
+# RTF
+
++ How common?
++ Libraries
+   + Stream and state driven - like PDF.
++ Convert to PDF/Docx/text
+
+---
+
+
+
+---
+
+# OCR
+
++ Start with  scanned documents
+  1. collection of images, or
+  1. PDF with each page an image
+
++ For 2, need to extract each page into separate file.
+   + ImageMagick
+```
+convert -density 150 -antialias "Lundkvist-1992-Bank vole monoclonal antibodies.pdf" -resize 1024x -quality 100 "bob%03d.jpg"
+```
+   + See MakeRules
+
+
+
+---
+# OfficeOpen Format - docx
+
++ docx, xlsx, pptx are ZIP files
+   + an archive containing collection of files
+```
+```
+
+  
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
